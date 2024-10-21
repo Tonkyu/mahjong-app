@@ -20,6 +20,13 @@ pub struct Player {
 }
 
 impl Player {
+    pub fn to_json(&self) -> String {
+        format!(r#"{{"id": {}, "name": "{}", "is_parent": {}, "point": {}, "wind": "{}", "hand": {}}}"#,
+                self.id, self.name, self.is_parent, self.point, self.wind, self.hand.to_json())
+    }
+}
+
+impl Player {
     pub fn new(id: PlayerIndex, name: String, wind: Wind, is_parent: bool) -> Player {
         Player {
             id,

@@ -1,12 +1,19 @@
 use crate::manager::enums::tile::Tile;
 use std::collections::{HashMap, HashSet};
 
+
 pub struct Hand {
     pub tehai: HashMap<Tile, usize>,
     pub pons: HashSet<Tile>,
     pub chiis: HashSet<(Tile,Tile, Tile)>,
     pub ankans: HashSet<Tile>,
     pub minkans: HashSet<Tile>,
+}
+
+impl Hand {
+    pub fn to_json(&self) -> String {
+        format!(r#"{{"hoge": "(to be implemented)"}}"#)
+    }
 }
 
 impl Hand {

@@ -10,7 +10,6 @@ use crate::manager::{
 };
 
 pub struct Room {
-    pub room_id: usize,
     pub players: [Player; 4],
     pub field_wind: Wind,
     pub round_num: usize,
@@ -20,7 +19,6 @@ pub struct Room {
 
 impl Room {
     pub fn new() -> Room {
-        let room_id = 10001;
         let players = [
                                     Player::new(0, String::from("A"), Wind::East, true),
                                     Player::new(1, String::from("B"), Wind::South, false),
@@ -28,7 +26,6 @@ impl Room {
                                     Player::new(3, String::from("D"), Wind::North, false),
                                 ];
         Room {
-            room_id,
             players,
             field_wind: Wind::East,
             round_num: 0,

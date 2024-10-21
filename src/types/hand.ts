@@ -1,0 +1,3 @@
+type Hand = {
+    hoge: string
+}

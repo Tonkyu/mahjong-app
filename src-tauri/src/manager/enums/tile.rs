@@ -1,4 +1,5 @@
 use enum_iterator::Sequence;
+use std::fmt;
 
 #[derive(Clone, Copy, PartialEq, Eq, Hash, Debug, PartialOrd, Ord, Sequence)]
 pub enum Tile {
@@ -130,5 +131,75 @@ impl Tile {
 
             _ => None,
         }
+    }
+}
+
+
+
+impl fmt::Display for Tile {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Tile::Character(c) => write!(f, "{}M", c),
+            Tile::Bamboo(b) => write!(f, "{}S", b),
+            Tile::Dot(d) => write!(f, "{}P", d),
+            Tile::Wind(w) => {
+                let wind_char = match w {
+                    Wind::East => 'e',
+                    Wind::South => 's',
+                    Wind::West => 'w',
+                    Wind::North => 'n',
+                };
+                write!(f, "{}", wind_char)
+            }
+            Tile::Dragon(d) => {
+                let dragon_char = match d {
+                    Dragon::White => 'W',
+                    Dragon::Green => 'G',
+                    Dragon::Red => 'R',
+                };
+                write!(f, "{}", dragon_char)
+            }
+        }
+    }
+}
+
+impl fmt::Display for Bamboo {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "{}", *self as u8 + 1)
+    }
+}
+
+impl fmt::Display for Character {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "{}", *self as u8 + 1)
+    }
+}
+
+impl fmt::Display for Dot {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "{}", *self as u8 + 1)
+    }
+}
+
+impl fmt::Display for Wind {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        let wind_char = match self {
+            Wind::East => 'e',
+            Wind::South => 's',
+            Wind::West => 'w',
+            Wind::North => 'n',
+        };
+        write!(f, "{}", wind_char)
+    }
+}
+
+impl fmt::Display for Dragon {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        let dragon_char = match self {
+            Dragon::White => 'W',
+            Dragon::Green => 'G',
+            Dragon::Red => 'R',
+        };
+        write!(f, "{}", dragon_char)
     }
 }
